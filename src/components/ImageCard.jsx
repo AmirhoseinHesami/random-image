@@ -7,16 +7,27 @@ import {
   CardFooter,
   Button,
   Text,
-  Flex,
 } from "@chakra-ui/react";
 import useImage from "../hooks/useImage";
 import { VscColorMode } from "react-icons/vsc";
 import { AiOutlineTrademarkCircle } from "react-icons/ai";
 import ImageCardSkeleton from "./ImageCardSkeleton";
 import ImageCardContainer from "./ImageCardContainer";
+import { useState } from "react";
+import { useAppContext } from "./AppContext";
 
 function ImageCard() {
-  const { image, error, isLoading } = useImage();
+  const { selectedCategory, reload } = useAppContext();
+  const { image, error, isLoading } = useImage(selectedCategory, reload);
+  const [isGrayscale, setIsGrayscale] = useState(false);
+
+  const toggleGrayscale = () => {
+    setIsGrayscale(!isGrayscale);
+  };
+
+  const imageStyle = {
+    filter: isGrayscale ? "grayscale(100%)" : "none",
+  };
 
   if (error) return <Text>{error}</Text>;
 
@@ -31,7 +42,11 @@ function ImageCard() {
           <ImageCardContainer>
             <Card>
               <CardBody padding={3}>
-                <Image src={image} borderRadius={"10px"}></Image>
+                <Image
+                  src={image}
+                  style={imageStyle}
+                  borderRadius={"10px"}
+                ></Image>
               </CardBody>
               <CardFooter justifyContent={"space-between"}>
                 <Button
@@ -40,7 +55,9 @@ function ImageCard() {
                 >
                   Watermark
                 </Button>
-                <Button rightIcon={<VscColorMode />}>Grayscale</Button>
+                <Button rightIcon={<VscColorMode />} onClick={toggleGrayscale}>
+                  Grayscale
+                </Button>
               </CardFooter>
             </Card>
           </ImageCardContainer>

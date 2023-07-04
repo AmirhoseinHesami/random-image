@@ -1,34 +1,21 @@
-import {
-  Button,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  Flex,
-} from "@chakra-ui/react";
+import { Button, Flex } from "@chakra-ui/react";
 import ColorModeSwitch from "./ColorModeSwitch";
-import { BsChevronDown } from "react-icons/bs";
 import { IoReloadOutline } from "react-icons/io5";
+import CategorySelector from "./CategorySelector";
+import { useAppContext } from "./AppContext";
 
 function NavBar() {
+  const { reload, setReload } = useAppContext();
+
   return (
     <Flex
       justifyContent={"space-between"}
       width={["100%", "100%", "100%", "60em"]}
     >
-      <Button leftIcon={<IoReloadOutline />}>Reload</Button>
-      <Menu>
-        <MenuButton as={Button} leftIcon={<BsChevronDown />}>
-          Actions
-        </MenuButton>
-        <MenuList>
-          <MenuItem>Download</MenuItem>
-          <MenuItem>Create a Copy</MenuItem>
-          <MenuItem>Mark as Draft</MenuItem>
-          <MenuItem>Delete</MenuItem>
-          <MenuItem>Attend a Workshop</MenuItem>
-        </MenuList>
-      </Menu>
+      <Button leftIcon={<IoReloadOutline />} onClick={() => setReload(!reload)}>
+        Reload
+      </Button>
+      <CategorySelector />
       <ColorModeSwitch />
     </Flex>
   );
