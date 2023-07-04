@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import apiClient from "../services/api-client";
 import { CanceledError } from "axios";
 
-const useImage = () => {
+const useImage = (category = "", reload) => {
   const [image, setImage] = useState(null);
   const [error, setError] = useState("");
   const [isLoading, setLoading] = useState(false);
@@ -12,7 +12,7 @@ const useImage = () => {
 
     setLoading(true);
     apiClient
-      .get("/randomimage?category", { signal: controller.signal })
+      .get(`/randomimage?category=${category}`, { signal: controller.signal })
       .then((res) => {
         setLoading(false);
         setImage(URL.createObjectURL(res.data));
@@ -24,7 +24,7 @@ const useImage = () => {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [category, reload]);
 
   return { image, error, isLoading };
 };
