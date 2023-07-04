@@ -12,14 +12,19 @@ import {
 import useImage from "../hooks/useImage";
 import { VscColorMode } from "react-icons/vsc";
 import { AiOutlineTrademarkCircle } from "react-icons/ai";
+import ImageCardSkeleton from "./ImageCardSkeleton";
 
 function ImageCard() {
-  const { image, error } = useImage();
+  const { image, error, isLoading } = useImage();
+
+  if (error) return <Text>{error}</Text>;
 
   return (
     <Center>
       <AbsoluteCenter>
-        {!error ? (
+        {isLoading ? (
+          <ImageCardSkeleton />
+        ) : (
           <Card>
             <CardBody padding={3}>
               <Image src={image} borderRadius={"10px"}></Image>
@@ -34,8 +39,6 @@ function ImageCard() {
               <Button rightIcon={<VscColorMode />}>Grayscale</Button>
             </CardFooter>
           </Card>
-        ) : (
-          <Text>{error}</Text>
         )}
       </AbsoluteCenter>
     </Center>
