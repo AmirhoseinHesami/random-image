@@ -9,7 +9,7 @@ import {
 
 function ImageCardSkeleton() {
   return (
-    <Card w={"350px"} h={"350px"}>
+    <Card>
       <CardBody>
         <Skeleton height={"250px"} borderRadius={"10px"} />
       </CardBody>

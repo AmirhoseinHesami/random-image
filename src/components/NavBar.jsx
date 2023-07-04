@@ -12,7 +12,10 @@ import { IoReloadOutline } from "react-icons/io5";
 
 function NavBar() {
   return (
-    <Flex justifyContent={"space-between"}>
+    <Flex
+      justifyContent={"space-between"}
+      width={["100%", "100%", "100%", "60em"]}
+    >
       <Button leftIcon={<IoReloadOutline />}>Reload</Button>
       <Menu>
         <MenuButton as={Button} leftIcon={<BsChevronDown />}>
