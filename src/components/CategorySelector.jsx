@@ -13,7 +13,9 @@ function CategorySelector() {
   return (
     <Menu>
       <MenuButton as={Button} leftIcon={<BsChevronDown />}>
-        {!selectedCategory ? "Category" : selectedCategory}
+        {!selectedCategory
+          ? "Category"
+          : capitalizeFirstLetter(selectedCategory)}
       </MenuButton>
       <MenuList>
         {categories.map((cat) => (

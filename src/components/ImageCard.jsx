@@ -15,11 +15,13 @@ import ImageCardSkeleton from "./ImageCardSkeleton";
 import ImageCardContainer from "./ImageCardContainer";
 import { useState } from "react";
 import { useAppContext } from "./AppContext";
+import { useColorMode } from "@chakra-ui/react";
 
 function ImageCard() {
   const { selectedCategory, reload } = useAppContext();
   const { image, error, isLoading } = useImage(selectedCategory, reload);
   const [isGrayscale, setIsGrayscale] = useState(false);
+  const { colorMode } = useColorMode();
 
   const toggleGrayscale = () => {
     setIsGrayscale(!isGrayscale);
@@ -40,7 +42,11 @@ function ImageCard() {
           </ImageCardContainer>
         ) : (
           <ImageCardContainer>
-            <Card>
+            <Card
+              style={{
+                backgroundColor: colorMode === "light" ? "#ddd" : "#202020",
+              }}
+            >
               <CardBody padding={3}>
                 <Image
                   src={image}

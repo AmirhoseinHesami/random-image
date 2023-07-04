@@ -5,11 +5,16 @@ import {
   CardBody,
   CardFooter,
   SkeletonCircle,
+  useColorMode,
 } from "@chakra-ui/react";
 
 function ImageCardSkeleton() {
+  const { colorMode } = useColorMode();
+
   return (
-    <Card>
+    <Card
+      style={{ backgroundColor: colorMode === "light" ? "#ddd" : "#202020" }}
+    >
       <CardBody>
         <Skeleton height={"250px"} borderRadius={"10px"} />
       </CardBody>
