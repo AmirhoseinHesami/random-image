@@ -1,11 +1,12 @@
 import {
-  Flex,
   Button,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
+  Flex,
 } from "@chakra-ui/react";
+import ColorModeSwitch from "./ColorModeSwitch";
 
 function NavBar() {
   return (
@@ -21,7 +22,7 @@ function NavBar() {
           <MenuItem>Attend a Workshop</MenuItem>
         </MenuList>
       </Menu>
-      <Button>Theme Mode</Button>
+      <ColorModeSwitch />
     </Flex>
   );
 }
