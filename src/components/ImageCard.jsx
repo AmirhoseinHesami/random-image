@@ -16,6 +16,7 @@ import ImageCardContainer from "./ImageCardContainer";
 import { useState } from "react";
 import { useAppContext } from "./AppContext";
 import { useColorMode } from "@chakra-ui/react";
+import Error from "./Error";
 
 function ImageCard() {
   const { selectedCategory, reload } = useAppContext();
@@ -31,7 +32,7 @@ function ImageCard() {
     filter: isGrayscale ? "grayscale(100%)" : "none",
   };
 
-  if (error) return <Text>{error}</Text>;
+  if (error) return <Error error={error} />;
 
   return (
     <Center>

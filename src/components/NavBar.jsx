@@ -8,10 +8,7 @@ function NavBar() {
   const { reload, setReload } = useAppContext();
 
   return (
-    <Flex
-      justifyContent={"space-between"}
-      width={["100%", "100%", "100%", "60em"]}
-    >
+    <Flex justifyContent="center" flexWrap="wrap" columnGap={5} rowGap={5}>
       <Button leftIcon={<IoReloadOutline />} onClick={() => setReload(!reload)}>
         Reload
       </Button>

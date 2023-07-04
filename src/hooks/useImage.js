@@ -12,7 +12,7 @@ const useImage = (category = "", reload) => {
 
     setLoading(true);
     apiClient
-      .get(`/randomimage?category=${category}`, { signal: controller.signal })
+      .get(`/xrandomimage?category=${category}`, { signal: controller.signal })
       .then((res) => {
         setLoading(false);
         setImage(URL.createObjectURL(res.data));
