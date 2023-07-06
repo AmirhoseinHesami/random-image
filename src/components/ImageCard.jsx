@@ -17,6 +17,7 @@ import { useState } from "react";
 import { useAppContext } from "./AppContext";
 import { useColorMode } from "@chakra-ui/react";
 import Error from "./Error";
+import ImageMagnifier from "./ImageMagnifier";
 
 function ImageCard() {
   const { selectedCategory, reload } = useAppContext();
@@ -28,9 +29,7 @@ function ImageCard() {
     setIsGrayscale(!isGrayscale);
   };
 
-  const imageStyle = {
-    filter: isGrayscale ? "grayscale(100%)" : "none",
-  };
+  const imageStyle = isGrayscale ? "grayscale(100%)" : "none";
 
   if (error) return <Error error={error} />;
 
@@ -49,11 +48,7 @@ function ImageCard() {
               }}
             >
               <CardBody padding={3}>
-                <Image
-                  src={image}
-                  style={imageStyle}
-                  borderRadius={"10px"}
-                ></Image>
+                <ImageMagnifier src={image} imageStyle={imageStyle} />
               </CardBody>
               <CardFooter justifyContent={"space-between"}>
                 <Button
