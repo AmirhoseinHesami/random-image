@@ -16,16 +16,14 @@ import { useAppContext } from "./AppContext";
 import { useColorMode } from "@chakra-ui/react";
 import Error from "./Error";
 import ImageMagnifier from "./ImageMagnifier";
+import { Watermark } from "@hirohe/react-watermark";
 
 function ImageCard() {
   const { selectedCategory, reload } = useAppContext();
   const { image, error, isLoading } = useImage(selectedCategory, reload);
   const [isGrayscale, setIsGrayscale] = useState(false);
+  const [isWatermark, setWatermark] = useState(false);
   const { colorMode } = useColorMode();
-
-  const toggleGrayscale = () => {
-    setIsGrayscale(!isGrayscale);
-  };
 
   const imageStyle = isGrayscale ? "grayscale(100%)" : "none";
 
@@ -46,18 +44,28 @@ function ImageCard() {
               }}
             >
               <CardBody padding={3}>
-                <ImageMagnifier src={image} imageStyle={imageStyle} />
+                <Watermark
+                  text="WaterMark"
+                  textSize="22"
+                  opacity="0.5"
+                  show={isWatermark}
+                >
+                  <ImageMagnifier src={image} imageStyle={imageStyle} />
+                </Watermark>
               </CardBody>
               <CardFooter justifyContent={"space-between"}>
                 <Button
                   marginRight="10px"
                   leftIcon={<AiOutlineTrademarkCircle />}
+                  onClick={() => setWatermark(!isWatermark)}
+                  variant={isWatermark ? "solid" : "outline"}
+                  colorScheme={colorMode === "light" ? "cyan" : "linkedin"}
                 >
                   Watermark
                 </Button>
                 <Button
                   rightIcon={<VscColorMode />}
-                  onClick={toggleGrayscale}
+                  onClick={() => setIsGrayscale(!isGrayscale)}
                   variant={isGrayscale ? "solid" : "outline"}
                   colorScheme={colorMode === "light" ? "cyan" : "linkedin"}
                 >
