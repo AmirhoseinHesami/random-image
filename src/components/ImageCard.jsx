@@ -50,8 +50,9 @@ function ImageCard() {
               <CardBody padding={3}>
                 <Watermark
                   text="Watermark"
-                  textSize="22"
+                  textSize="20"
                   opacity="0.6"
+                  gutter="6"
                   show={isWatermark}
                 >
                   <ImageMagnifier src={image} imageStyle={imageStyle} />
