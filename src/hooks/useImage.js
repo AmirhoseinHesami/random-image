@@ -11,8 +11,11 @@ const useImage = (category = "", reload) => {
     const controller = new AbortController();
 
     setLoading(true);
+    setError(false);
     apiClient
-      .get(`/randomimage?category=${category}`, { signal: controller.signal })
+      .get(`/randomimage?category=${category}&width=480&height=360`, {
+        signal: controller.signal,
+      })
       .then((res) => {
         setLoading(false);
         setImage(URL.createObjectURL(res.data));

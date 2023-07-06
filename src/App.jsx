@@ -1,7 +1,8 @@
 import { Box } from "@chakra-ui/react";
+
+import { AppWrapper } from "./components/AppContext";
 import NavBar from "./components/NavBar";
 import ImageCard from "./components/ImageCard";
-import { AppWrapper } from "./components/AppContext";
 
 function App() {
   return (

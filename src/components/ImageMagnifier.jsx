@@ -3,19 +3,16 @@ import { useState } from "react";
 function ImageMagnifier({
   src,
   imageStyle,
-  magnifierHeight = 90,
-  magnifieWidth = 90,
+  magnifierHeight = 100,
+  magnifieWidth = 100,
   zoomLevel = 1.5,
 }) {
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
+
   return (
-    <div
-      style={{
-        position: "relative",
-      }}
-    >
+    <div style={{ position: "relative" }}>
       <img
         src={src}
         style={{
@@ -55,7 +52,8 @@ function ImageMagnifier({
           left: `${x - magnifieWidth / 2}px`,
           opacity: "1",
           border: "2px solid lightgray",
-          backgroundColor: "white",
+          borderRadius: "50%",
+          backgroundColor: "transparent",
           backgroundImage: `url('${src}')`,
           backgroundRepeat: "no-repeat",
           filter: imageStyle,

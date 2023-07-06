@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 import {
   Center,
   AbsoluteCenter,
@@ -6,17 +8,19 @@ import {
   CardFooter,
   Button,
 } from "@chakra-ui/react";
-import useImage from "../hooks/useImage";
+import { useColorMode } from "@chakra-ui/react";
+
 import { VscColorMode } from "react-icons/vsc";
 import { AiOutlineTrademarkCircle } from "react-icons/ai";
+
+import { Watermark } from "@hirohe/react-watermark";
+
+import { useAppContext } from "./AppContext";
+import useImage from "../hooks/useImage";
 import ImageCardSkeleton from "./ImageCardSkeleton";
 import ImageCardContainer from "./ImageCardContainer";
-import { useState } from "react";
-import { useAppContext } from "./AppContext";
-import { useColorMode } from "@chakra-ui/react";
-import Error from "./Error";
 import ImageMagnifier from "./ImageMagnifier";
-import { Watermark } from "@hirohe/react-watermark";
+import Error from "./Error";
 
 function ImageCard() {
   const { selectedCategory, reload } = useAppContext();
@@ -45,9 +49,9 @@ function ImageCard() {
             >
               <CardBody padding={3}>
                 <Watermark
-                  text="WaterMark"
+                  text="Watermark"
                   textSize="22"
-                  opacity="0.5"
+                  opacity="0.6"
                   show={isWatermark}
                 >
                   <ImageMagnifier src={image} imageStyle={imageStyle} />

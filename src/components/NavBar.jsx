@@ -1,7 +1,9 @@
 import { Button, Flex } from "@chakra-ui/react";
-import ColorModeSwitch from "./ColorModeSwitch";
 import { IoReloadOutline } from "react-icons/io5";
+
+import ColorModeSwitch from "./ColorModeSwitch";
 import CategorySelector from "./CategorySelector";
+
 import { useAppContext } from "./AppContext";
 
 function NavBar() {

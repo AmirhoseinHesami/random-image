@@ -1,5 +1,6 @@
 import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
+
 import { useAppContext } from "./AppContext";
 
 const categories = ["nature", "city", "technology", "food", "wildlife"];
