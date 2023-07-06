@@ -13,7 +13,9 @@ function ImageCardSkeleton() {
 
   return (
     <Card
-      style={{ backgroundColor: colorMode === "light" ? "#ddd" : "#202020" }}
+      style={{
+        backgroundColor: colorMode === "light" ? "#d7d7d7" : "#202020",
+      }}
     >
       <CardBody>
         <Skeleton height={"250px"} borderRadius={"10px"} />

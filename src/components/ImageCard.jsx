@@ -2,11 +2,9 @@ import {
   Center,
   AbsoluteCenter,
   CardBody,
-  Image,
   Card,
   CardFooter,
   Button,
-  Text,
 } from "@chakra-ui/react";
 import useImage from "../hooks/useImage";
 import { VscColorMode } from "react-icons/vsc";
@@ -44,7 +42,7 @@ function ImageCard() {
           <ImageCardContainer>
             <Card
               style={{
-                backgroundColor: colorMode === "light" ? "#ddd" : "#202020",
+                backgroundColor: colorMode === "light" ? "#d7d7d7" : "#202020",
               }}
             >
               <CardBody padding={3}>
@@ -57,7 +55,12 @@ function ImageCard() {
                 >
                   Watermark
                 </Button>
-                <Button rightIcon={<VscColorMode />} onClick={toggleGrayscale}>
+                <Button
+                  rightIcon={<VscColorMode />}
+                  onClick={toggleGrayscale}
+                  variant={isGrayscale ? "solid" : "outline"}
+                  colorScheme={colorMode === "light" ? "cyan" : "linkedin"}
+                >
                   Grayscale
                 </Button>
               </CardFooter>
