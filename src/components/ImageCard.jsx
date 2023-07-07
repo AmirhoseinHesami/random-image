@@ -44,7 +44,7 @@ function ImageCard() {
           <ImageCardContainer>
             <Card
               style={{
-                backgroundColor: colorMode === "light" ? "#d7d7d7" : "#202020",
+                backgroundColor: colorMode === "light" ? "#ededed" : "#252525",
               }}
             >
               <CardBody padding={3}>
