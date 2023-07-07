@@ -7,8 +7,8 @@ import {
   Card,
   CardFooter,
   Button,
+  useColorMode,
 } from "@chakra-ui/react";
-import { useColorMode } from "@chakra-ui/react";
 
 import { VscColorMode } from "react-icons/vsc";
 import { AiOutlineTrademarkCircle } from "react-icons/ai";

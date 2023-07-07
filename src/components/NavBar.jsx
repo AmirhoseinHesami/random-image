@@ -1,10 +1,9 @@
 import { Button, Flex } from "@chakra-ui/react";
 import { IoReloadOutline } from "react-icons/io5";
 
+import { useAppContext } from "./AppContext";
 import ColorModeSwitch from "./ColorModeSwitch";
 import CategorySelector from "./CategorySelector";
-
-import { useAppContext } from "./AppContext";
 
 function NavBar() {
   const { reload, setReload } = useAppContext();

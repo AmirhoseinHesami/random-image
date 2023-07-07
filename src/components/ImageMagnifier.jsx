@@ -20,8 +20,8 @@ function ImageMagnifier({
           filter: imageStyle,
         }}
         onMouseEnter={(e) => {
-          const elem = e.currentTarget;
-          const { width, height } = elem.getBoundingClientRect();
+          const element = e.currentTarget;
+          const { width, height } = element.getBoundingClientRect();
           setSize([width, height]);
           setShowMagnifier(true);
         }}
