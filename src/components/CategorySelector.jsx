@@ -2,7 +2,14 @@ import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
 import { BsChevronDown } from "react-icons/bs";
 import { useAppContext } from "./AppContext";
 
-const categories = ["nature", "city", "technology", "food", "wildlife"];
+const categories = [
+  "nature",
+  "city",
+  "technology",
+  "food",
+  "abstract",
+  "wildlife",
+].sort();
 
 const capitalizeFirstLetter = (word) =>
   word.charAt(0).toUpperCase() + word.slice(1);

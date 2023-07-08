@@ -30,6 +30,7 @@ function ImageCard() {
   const { colorMode } = useColorMode();
 
   const imageStyle = isGrayscale ? "grayscale(100%)" : "none";
+  const ButtonColorScheme = colorMode === "light" ? "cyan" : "linkedin";
 
   if (error) return <Error error={error} />;
 
@@ -51,7 +52,7 @@ function ImageCard() {
                 <Watermark
                   text="Watermark"
                   textSize="20"
-                  opacity="0.6"
+                  opacity="0.7"
                   gutter="6"
                   show={isWatermark}
                 >
@@ -64,7 +65,7 @@ function ImageCard() {
                   leftIcon={<AiOutlineTrademarkCircle />}
                   onClick={() => setWatermark(!isWatermark)}
                   variant={isWatermark ? "solid" : "outline"}
-                  colorScheme={colorMode === "light" ? "cyan" : "linkedin"}
+                  colorScheme={ButtonColorScheme}
                 >
                   Watermark
                 </Button>
@@ -72,7 +73,7 @@ function ImageCard() {
                   rightIcon={<VscColorMode />}
                   onClick={() => setIsGrayscale(!isGrayscale)}
                   variant={isGrayscale ? "solid" : "outline"}
-                  colorScheme={colorMode === "light" ? "cyan" : "linkedin"}
+                  colorScheme={ButtonColorScheme}
                 >
                   Grayscale
                 </Button>

@@ -17,7 +17,7 @@ function ImageCardSkeleton() {
       }}
     >
       <CardBody>
-        <Skeleton h={["205px", "280px", "355px"]} borderRadius={"10px"} />
+        <Skeleton h={["200px", "275px", "350px"]} borderRadius={"10px"} />
       </CardBody>
       <CardFooter justifyContent={"space-between"}>
         <SkeletonCircle />

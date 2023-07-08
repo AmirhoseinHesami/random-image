@@ -22,12 +22,13 @@ function ImageMagnifier({
         onMouseEnter={(e) => {
           const element = e.currentTarget;
           const { width, height } = element.getBoundingClientRect();
+
           setSize([width, height]);
           setShowMagnifier(true);
         }}
         onMouseMove={(e) => {
-          const elem = e.currentTarget;
-          const { top, left } = elem.getBoundingClientRect();
+          const element = e.currentTarget;
+          const { top, left } = element.getBoundingClientRect();
 
           const x = e.pageX - left - window.scrollX;
           const y = e.pageY - top - window.scrollY;
@@ -36,7 +37,7 @@ function ImageMagnifier({
         onMouseLeave={() => {
           setShowMagnifier(false);
         }}
-        alt={"img"}
+        alt={"Random Image"}
       />
 
       <div
