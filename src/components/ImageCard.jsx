@@ -17,9 +17,9 @@ import { Watermark } from "@hirohe/react-watermark";
 
 import { useAppContext } from "./AppContext";
 import useImage from "../hooks/useImage";
-import ImageCardSkeleton from "./ImageCardSkeleton";
 import ImageCardContainer from "./ImageCardContainer";
-import ImageMagnifier from "./ImageMagnifier";
+import ImageCardSkeleton from "./ImageCardSkeleton";
+import Image from "./Image";
 import Error from "./Error";
 
 function ImageCard() {
@@ -53,10 +53,10 @@ function ImageCard() {
                   text="Watermark"
                   textSize="20"
                   opacity="0.7"
-                  gutter="6"
+                  gutter="8"
                   show={isWatermark}
                 >
-                  <ImageMagnifier src={image} imageStyle={imageStyle} />
+                  <Image src={image} imageStyle={imageStyle} />
                 </Watermark>
               </CardBody>
               <CardFooter justifyContent={"space-between"}>
