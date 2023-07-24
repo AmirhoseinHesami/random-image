@@ -2,6 +2,18 @@ body {
   overflow: hidden;
 }
 
+.image-magnifier-container {
+  position: relative;
+}
+
+.light-card {
+  background-color: #ededed !important;
+}
+
+.dark-card {
+  background-color: #252525 !important;
+}
+
 img {
   transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   border-radius: 10px;

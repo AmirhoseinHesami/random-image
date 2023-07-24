@@ -16,6 +16,7 @@ import { AiOutlineTrademarkCircle } from "react-icons/ai";
 import { Watermark } from "@hirohe/react-watermark";
 
 import { useAppContext } from "./AppContext";
+import ImageContext from "./ImageContext";
 import useImage from "../hooks/useImage";
 import ImageCardContainer from "./ImageCardContainer";
 import ImageCardSkeleton from "./ImageCardSkeleton";
@@ -44,9 +45,7 @@ function ImageCard() {
         ) : (
           <ImageCardContainer>
             <Card
-              style={{
-                backgroundColor: colorMode === "light" ? "#ededed" : "#252525",
-              }}
+              className={colorMode === "light" ? "light-card" : "dark-card"}
             >
               <CardBody padding={3}>
                 <Watermark
@@ -56,7 +55,9 @@ function ImageCard() {
                   gutter="8"
                   show={isWatermark}
                 >
-                  <Image src={image} imageStyle={imageStyle} />
+                  <ImageContext.Provider value={{ image, imageStyle }}>
+                    <Image />
+                  </ImageContext.Provider>
                 </Watermark>
               </CardBody>
               <CardFooter justifyContent={"space-between"}>

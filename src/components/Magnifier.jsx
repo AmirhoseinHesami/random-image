@@ -1,16 +1,15 @@
-import { memo } from "react";
+import { memo, useContext } from "react";
+import ImageContext from "./ImageContext";
 
-function Magnifier({
-  magnifieWidth,
-  magnifierHeight,
-  imageStyle,
-  imgHeight,
-  imgWidth,
-  zoomLevel,
-  src,
-  x,
-  y,
-}) {
+const conf = {
+  magnifierHeight: 100,
+  magnifieWidth: 100,
+  zoomLevel: 1.5,
+};
+
+function Magnifier({ imgHeight, imgWidth, x, y }) {
+  const { image, imageStyle } = useContext(ImageContext);
+
   return (
     <div
       style={{
@@ -22,19 +21,25 @@ function Magnifier({
         backgroundColor: "transparent",
         backgroundRepeat: "no-repeat",
 
-        height: `${magnifierHeight}px`,
-        width: `${magnifieWidth}px`,
+        height: `${conf.magnifierHeight}px`,
+        width: `${conf.magnifieWidth}px`,
 
-        top: `${y - magnifierHeight / 2}px`,
-        left: `${x - magnifieWidth / 2}px`,
+        top: `${y - conf.magnifierHeight / 2}px`,
+        left: `${x - conf.magnifieWidth / 2}px`,
 
-        backgroundImage: `url('${src}')`,
+        backgroundImage: `url('${image}')`,
         filter: imageStyle,
 
-        backgroundSize: `${imgWidth * zoomLevel}px ${imgHeight * zoomLevel}px`,
+        backgroundSize: `${imgWidth * conf.zoomLevel}px ${
+          imgHeight * conf.zoomLevel
+        }px`,
 
-        backgroundPositionX: `${-x * zoomLevel + magnifieWidth / 2}px`,
-        backgroundPositionY: `${-y * zoomLevel + magnifierHeight / 2}px`,
+        backgroundPositionX: `${
+          -x * conf.zoomLevel + conf.magnifieWidth / 2
+        }px`,
+        backgroundPositionY: `${
+          -y * conf.zoomLevel + conf.magnifierHeight / 2
+        }px`,
       }}
     ></div>
   );

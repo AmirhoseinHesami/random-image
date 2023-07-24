@@ -1,13 +1,9 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useContext } from "react";
+import ImageContext from "./ImageContext";
 import Magnifier from "./Magnifier";
 
-function Image({
-  src,
-  imageStyle,
-  magnifierHeight = 100,
-  magnifieWidth = 100,
-  zoomLevel = 1.5,
-}) {
+function Image() {
+  const { image, imageStyle } = useContext(ImageContext);
   const [[x, y], setXY] = useState([0, 0]);
   const [[imgWidth, imgHeight], setSize] = useState([0, 0]);
   const [showMagnifier, setShowMagnifier] = useState(false);
@@ -32,30 +28,16 @@ function Image({
   const handleMouseLeave = useCallback(() => setShowMagnifier(false));
 
   return (
-    <div style={{ position: "relative" }}>
+    <div className="image-magnifier-container">
       <img
-        src={src}
+        src={image}
         style={{ filter: imageStyle }}
         onMouseEnter={handleMouseEnter}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
         alt={"Random Image"}
       />
-      {showMagnifier && (
-        <Magnifier
-          {...{
-            magnifieWidth,
-            magnifierHeight,
-            imageStyle,
-            imgHeight,
-            imgWidth,
-            zoomLevel,
-            src,
-            x,
-            y,
-          }}
-        />
-      )}
+      {showMagnifier && <Magnifier {...{ imgHeight, imgWidth, x, y }} />}
     </div>
   );
 }

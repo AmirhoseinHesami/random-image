@@ -11,11 +11,7 @@ function ImageCardSkeleton() {
   const { colorMode } = useColorMode();
 
   return (
-    <Card
-      style={{
-        backgroundColor: colorMode === "light" ? "#ededed" : "#252525",
-      }}
-    >
+    <Card className={colorMode === "light" ? "light-card" : "dark-card"}>
       <CardBody>
         <Skeleton h={["200px", "275px", "350px"]} borderRadius={"10px"} />
       </CardBody>
